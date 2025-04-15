@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Vilniaus lankytinos vietos</title>
+
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; 
+            color: #e0e0e0;           
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(145deg, #1a1a1a, #212121);
+            padding: 30px 0;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            color: #ecf0f1;
+            position: relative;
+            z-index: 10;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header nav ul li {
+            margin: 0 12px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        header nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            padding: 12px 18px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            text-align: center;
+            display: block;
+        }
+
+        header nav ul li a.active {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        header nav ul li a:hover {
+            background-color: #2980b9;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        main {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #212121, #181818);
+            border-radius: 15px;
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2 {
+            color: #ecf0f1;
+            margin-bottom: 30px;
+            font-size: 3.2em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        .auth-container {
+            background-color: #2c3e50;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            margin: 40px auto;
+            color: #ecf0f1;
+            max-width: 500px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-tabs button {
+            background-color: transparent;
+            border: none;
+            color: #ecf0f1;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .auth-tabs button.active,
+        .auth-tabs button:hover {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .auth-form label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .auth-form input {
+            width: calc(100% - 120px);
+            padding: 10px;
+            border: 2px solid #34495e;
+            border-radius: 8px;
+            background-color: #34495e;
+            color: #ecf0f1;
+            margin-bottom: 20px;
+        }
+
+        .auth-form button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1em;
+            font-weight: 600;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .auth-form button:hover {
+            background-color: #2980b9;
+        }
+
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .welcome-message h2 {
+            font-size: 2.5em;
+        }
+
+        .welcome-message button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .welcome-message button:hover {
+            background-color: #c0392b;
+        }
+        .places-filter {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .places-filter label {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .places-filter select {
+            padding: 10px 15px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            border: 2px solid #34495e;
+            background-color: #34495e;
+            color: #ecf0f1;
+            cursor: pointer;
+            transition: border 0.3s ease;
+        }
+
+        .places-filter select:hover {
+            border-color: #2980b9;
+        }
+
+        .places-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .place-item {
+            background-color: #2c3e50;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.5);
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            position: relative;
+            color: #ecf0f1;
+            height: 480px;
+        }
+
+        .place-item img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .place-item h3 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .place-item p {
+            font-weight: 500;
+            font-size: 1.1em;
+            margin: 15px 0;
+            color: #bdc3c7;
+            height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .place-item button {
+            background-color: #3498db;
+            color: white;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 0.8em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+
+        .place-item button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .place-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+        .place-item:hover img {
+            transform: scale(1.1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #121212;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            color: #ecf0f1;
+            border-radius: 10px;
+            max-width: 800px;
+        }
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            float: right;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #fff;
+        }
+        .modal-content img {
+            max-width: 100%;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        #modalImages img {
+        width: 372px;   
+        height: 330px;    
+        object-fit: cover;
+        margin: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 40px;
+            box-shadow: 0 -6px 15px rgba(0, 0, 0, 0.3);
+        }
+        footer .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+        footer .footer-item {
+            flex: 1 1 200px;
+            margin: 10px;
+        }
+        footer h2 {
+            margin-bottom: 15px;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer ul li {
+            margin-bottom: 10px;
+        }
+        footer ul li i {
+            margin-right: 10px;
+        }
+        .social-share {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .social-share a {
+            text-decoration: none;
+            font-size: 2.5em;
+            margin: 0 25px;
+            color: #ecf0f1;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-share a:hover {
+            color: #e74c3c;
+            transform: scale(1.1);
+        }
+        .newsletter {
+            background-color: #34495e;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .newsletter form {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .newsletter form input {
+            padding: 10px 15px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px 0 0 8px;
+            outline: none;
+            width: 250px;
+            margin-bottom: 10px;
+        }
+        .newsletter form button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            background-color: #2980b9;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+        .newsletter form button:hover {
+            background-color: #1abc9c;
+        }
+
+        @media (max-width: 768px) {
+            header nav ul {
+                flex-direction: column;
+            }
+            .footer-content {
+                flex-direction: column;
+            }
+            .places-list {
+                grid-template-columns: 1fr;
+            }
+            .auth-form label {
+                width: 100%;
+                text-align: left;
+                margin-bottom: 5px;
+            }
+            .auth-form input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Pagrindinis</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> Apie mus</a></li>
+                <li><a href="routes.html"><i class="fas fa-map-marked-alt"></i> Maršrutai</a></li>
+                <li><a href="contacts.html"><i class="fas fa-phone-alt"></i> Kontaktai</a></li>
+                <li><a href="faq.html"><i class="fas fa-question-circle"></i> D.U.K.</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <section id="auth-section">
+            <div class="auth-container" id="auth-container">
+                <div class="auth-tabs">
+                    <button id="login-tab" class="active">Prisijungti</button>
+                    <button id="register-tab">Registruotis</button>
+                </div>
+
+                <form id="authForm" class="auth-form active" data-mode="login">
+                    <label for="auth-username">Vartotojas:</label>
+                    <input type="text" id="auth-username" name="username" required />
+                    <br/>
+                    <label for="auth-password">Slaptažodis:</label>
+                    <input type="password" id="auth-password" name="password" required />
+                    <br/>
+                    <button type="submit">Prisijungti</button>
+                </form>
+            </div>
+
+    
+            <div class="welcome-message" id="welcome-message" style="display: none;">
+                <h2>Sveikas, <span id="welcome-username"></span>!</h2>
+                <button id="logout-button">Atsijungti</button>
+            </div>
+        </section>
+
+   
+        <section>
+            <h2>Žemėlapis su visom lankytinom vietom</h2>
+            <div id="map" style="height: 500px; margin-bottom: 30px; border-radius: 15px; box-shadow: 0 8px 35px rgba(0, 0, 0, 0.3); background-color: #333;"></div>
+
+            <h2>Vietos, kurias verta aplankyti</h2>
+            <div class="places-filter">
+                <label for="category">Pasirinkite kategoriją:</label>
+                <select id="category" onchange="filterPlaces()">
+                    <option value="all">Visos</option>
+                    <option value="Įžymybės">Įžymybės</option>
+                    <option value="Restoranai">Restoranai</option>
+                    <option value="Viešbučiai">Viešbučiai</option>
+                    <option value="Menai">Menai ir kultūra</option>
+                    <option value="Paminklai">Istoriniai paminklai</option>
+                    <option value="Muziejai">Muziejai</option>
+                    <option value="Architektūra">Architektūra ir gatvės menas</option>
+                </select>
+            </div>
+            <div class="places-list" id="places-list"></div>
+        </section>
+    </main>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-item">
+                <h2>Susisiekite su mumis</h2>
+                <ul>
+                    <li><i class="fas fa-phone-alt"></i> +370 600 00000</li>
+                    <li><i class="fas fa-envelope"></i> info@vilniusguide.lt</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Vilnius, Lietuva</li>
+                </ul>
+            </div>
+            <div class="footer-item">
+                <h2>Socialiniai tinklai</h2>
+                <div class="social-share">
+                    <a href="https://www.facebook.com/deividas.doda.7/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/scamlxrd" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalTitle"></div>
+            <div id="modalImages"></div>
+            <div id="modalDescription"></div>
+            <div id="modalCoordinates"></div>
+            <div id="modalAddress"></div>
+            <div id="modalHistory"></div>
+            <div id="modalNearbyAttractions"></div>
+            <div id="modalVisitorInfo"></div>
+        </div>
+    </div>
+    <script 
+        async 
+        defer 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHjBq3Lrf7_s0-bE9aRZG4UYmN98bG2OQ&callback=initMap">
+    </script>
+    <script>
+    var places = {
+            "Vilniaus Stiklo kvartalas": {
+                title: "Vilniaus Stiklo kvartalas",
+                images: ["assets/stiklo_kvartalas_1.jpg", "assets/stiklo_kvartalas_2.jpg"],
+                description: "Stiklo kvartalas – tai modernus Vilniaus rajonas, kuris žavi savo stikliniais pastatais ir pramogų galimybėmis. Šis rajonas yra puikus pavyzdys, kaip modernios architektūros elementai harmoningai dera su istoriniu miesto paveldėtu kraštovaizdžiu.",
+                lat: 54.679906,
+                lon: 25.286389,
+                address: "Stiklo kvartalas, Vilnius, Lietuva",
+                history: "Stiklo kvartalas buvo sukurtas kaip modernus verslo ir gyvenamasis rajonas, žymus dėl savo stiklinių pastatų ir erdvių viešųjų erdvių. Jo kūrimas prasidėjo 2000-aisiais metais, ir šiandien jis tapo svarbiu miesto centru.",
+                nearby_attractions: [
+                    "Gedimino pilies bokštas", 
+                    "Vėtrungės paminklas",
+                    "Vilniaus senamiestis"
+                ],
+                visitor_info: "Atviras visą savaitę, darbo valandos: 10:00-18:00. Rekomenduojame aplankyti su gidu, kad geriau suprastumėte šio rajono architektūrinius sprendimus.",
+                category: "Įžymybės"
+            },
+            "Gedimino pilies bokštas": {
+                title: "Gedimino pilies bokštas",
+                images: ["assets/gedimino_pilis_1.jpg", "assets/gedimino_pilis_2.jpg"],
+                description: "Gedimino pilies bokštas yra vienas iš svarbiausių Vilniaus simbolių, su nuostabiais vaizdais į miesto panoramą. Šis viduramžių paminklas tapo istoriniu liudijimu apie Lietuvoje vykusius karinius ir politinius įvykius.",
+                lat: 54.6869235901359,
+                lon: 25.290649525085207,
+                address: "Pilies g. 17, Vilnius, Lietuva",
+                history: "Gedimino pilies bokštas buvo pastatytas XIV a. kaip dalis Gedimino pilies. Tai buvo karinis stebėjimo bokštas, o dabar jis yra vienas iš pagrindinių turistinių objektų Vilniuje.",
+                nearby_attractions: [
+                    "Gedimino prospektas",
+                    "Stiklo kvartalas",
+                    "Vilniaus senamiestis"
+                ],
+                visitor_info: "Atviras kasdien 10:00-20:00. Bilieto kaina: 5 EUR. Galima pasinaudoti liftu arba lipti laiptais į viršų.",
+                category: "Paminklai"
+            },
+            "Vėtrungės paminklas": {
+                title: "Vėtrungės paminklas",
+                images: ["assets/vetrunges_paminklas_1.jpg", "assets/vetrunges_paminklas_2.jpg"],
+                description: "Vėtrungės paminklas simbolizuoja lietuviškąjį vėjo ženklą. Tai svarbus meno kūrinys, kuris ne tik vaizduoja Lietuvos kultūrą, bet ir pagerbia senojo meno tradicijas.",
+                lat: 54.68391726867056,
+                lon: 25.2850748648035,
+                address: "Vėtrungės g., Vilnius, Lietuva",
+                history: "Paminklas buvo pastatytas siekiant paminėti lietuvių istorijos svarbą. Vėtrungė – lietuvių tradicinis ženklas, kuris padėjo atpažinti vėjo kryptį ir buvo naudojama jūrininkų ir žemdirbių kasdienybėje.",
+                nearby_attractions: [
+                    "Vilniaus Katedra",
+                    "Antakalnio kapinės",
+                    "Pavilnio bažnyčia"
+                ],
+                visitor_info: "Paminklas atviras 24 valandas per parą, bet geriausiai lankytis dienos metu. Nėra bilieto, tačiau rekomenduojama aplankyti su gidu.",
+                category: "Menai"
+            },
+            "Paupio turgus": {
+                title: "Paupio turgus",
+                images: ["assets/paupio_turgus_1.jpg", "assets/paupio_turgus_2.jpg"],
+                description: "Paupio turgus – tai modernus turgus Vilniaus centre, kuriame galima rasti vietinių gamintojų prekes, šviežius maisto produktus ir autentiškus rankdarbius. Šis turgus taip pat yra puiki vieta susitikti su vietiniais gyventojais ir mėgautis unikaliu miesto gyvenimu.",
+                lat: 54.678575996844025,
+                lon: 25.302503869259784,
+                address: "Paupio g. 1, Vilnius, Lietuva",
+                history: "Paupio turgus buvo atidarytas 2015 metais kaip modernus ir žalias miesto prekybos centras, kur gyventojai gali įsigyti tiek tradicinių, tiek šiuolaikinių prekių. Turgus siūlo platų vietinių produktų asortimentą ir yra mėgstama vieta vietos gyventojams.",
+                nearby_attractions: [
+                    "Paupio parkas",
+                    "Trijų kryžių kalnas",
+                    "Vilniaus universitetas"
+                ],
+                visitor_info: "Atviras kasdien 9:00-17:00. Nėra įėjimo mokesčio, tačiau verta aplankyti, jei norite įsigyti vietinių prekių.",
+                category: "Restoranai"
+            },
+            "Paminklas Zappai": {
+                title: "Paminklas Zappai",
+                images: ["assets/zappa_paminklas_1.jpg", "assets/zappa_paminklas_2.jpg"],
+                description: "Paminklas Frankui Zappai yra unikalus meno kūrinys, skirtas pagerbti pasaulinio garso muzikantui, kompozitoriui ir dainininkui Frankui Zappai. Jis buvo pastatytas kaip paminklas jo indėliui į muziką ir meną.",
+                lat: 54.68303470779618,
+                lon: 25.27602188460001,
+                address: "Vokiečių g., Vilnius, Lietuva",
+                history: "Paminklas Frankui Zappai buvo atidarytas 1995 metais Vilniuje, kaip gerbimo muziko atminimo ženklas. Zappa buvo žinomas dėl savo novatoriško požiūrio į muziką ir kultūrą.",
+                nearby_attractions: [
+                    "Paupio turgus",
+                    "Vilniaus universitetas",
+                    "Gedimino pilies bokštas"
+                ],
+                visitor_info: "Paminklas atviras visą parą. Nėra įėjimo mokesčio.",
+                category: "Paminklai"
+            },
+            "Trijų kryžių kalnas": {
+                title: "Trijų kryžių kalnas",
+                images: ["assets/triju_kryziu_kalnas_1.jpg", "assets/triju_kryziu_kalnas_2.jpg"],
+                description: "Trijų kryžių kalnas – viena iš Vilniaus žymiausių vietų, siūlanti nuostabius miesto panoramos vaizdus. Kalnas yra įkurtas ant aukšto kalno ir nuo jo atsiveria įspūdingi vaizdai.",
+                lat: 54.68690563558748,
+                lon: 25.297639136233247,
+                address: "Trijų kryžių kalnas, Vilnius, Lietuva",
+                history: "Trijų kryžių kalnas turi gilų istorinių įvykių šaknų. Jis buvo pastatytas 17 a. kaip simbolis kovoms už Lietuvos nepriklausomybę ir pagarbą žuvusiems už laisvę.",
+                nearby_attractions: [
+                    "Vilniaus Katedra",
+                    "Vilniaus universitetas",
+                    "Paupio turgus"
+                ],
+                visitor_info: "Aikštė yra atvira visą parą. Nėra bilieto mokesčio.",
+                category: "Istoriniai paminklai"
+            },
+            "Aušros vartai": {
+                title: "Aušros vartai",
+                images: ["assets/ausros_vartai_1.jpg", "assets/ausros_vartai_2.jpg"],
+                description: "Aušros vartai – tai vienas iš Vilniaus senamiesčio gynybinių vartų fragmentų. Šie vartai buvo svarbus viduramžių miesto gynybos elementas.",
+                lat: 54.67440834811853,
+                lon: 25.289547592209374,
+                address: "Aušros Vartų g. 14, Vilnius, Lietuva",
+                history: "Aušros vartai buvo pastatyti XIV a., kad apsaugotų Vilniaus senamiestį nuo galimų priešų. Tai yra unikalus viduramžių architektūros pavyzdys.",
+                nearby_attractions: [
+                    "Vilniaus senamiestis",
+                    "Paupio turgus",
+                    "Vilniaus universitetas"
+                ],
+                visitor_info: "Atviras visą savaitę. Nėra bilieto mokesčio, tačiau siūlome užsisakyti gido paslaugas.",
+                category: "Istoriniai paminklai"
+            },
+            "Gynybinės sienos": {
+                title: "Gynybinės sienos",
+                images: ["assets/gyn_sienos_1.jpg", "assets/gyn_sienos_2.jpg"],
+                description: "Vilniaus gynybinės sienos buvo esminis miesto gynybos elementas viduramžiais. Šiandien jos yra svarbus istorinės Vilniaus dalies elementas.",
+                lat: 54.67719142118592,
+                lon: 25.292693220814094,
+                address: "Vilniaus gynybinės sienos, Vilnius, Lietuva",
+                history: "Šios sienos buvo pastatytos XIV a., kad apsaugotų Vilniaus miestą nuo išorinių grėsmių. Tai viena iš geriausiai išlikusių viduramžių struktūrų Vilniuje.",
+                nearby_attractions: [
+                    "Vilniaus senamiestis",
+                    "Gedimino pilies bokštas",
+                    "Paupio turgus"
+                ],
+                visitor_info: "Atviras visą parą. Lankymas nemokamas, tačiau rekomenduojama turėti gidą.",
+                category: "Istoriniai paminklai"
+            },
+            "Lukiškių aikštė": {
+                title: "Lukiškių aikštė",
+                images: ["assets/lukiškiu_aikštė_1.jpg", "assets/lukiškiu_aikštė_2.jpg"],
+                description: "Lukiškių aikštė – viena iš svarbiausių Vilniaus miesto aikščių, kuri tapo svarbiu kultūros ir istorijos centru. Čia taip pat yra ir paminklas kovotojams už nepriklausomybę.",
+                lat: 54.689653231573445,
+                lon: 25.2708762731825,
+                address: "Lukiškių aikštė, Vilnius, Lietuva",
+                history: "Aikštė buvo suformuota XVII a. ir ilgą laiką buvo svarbus prekybos ir renginių centras. Šiuo metu aikštėje stovi monumentas, skirtas kovotojams už nepriklausomybę.",
+                nearby_attractions: [
+                    "Vilniaus Katedra",
+                    "Vilniaus universitetas",
+                    "Trijų kryžių kalnas"
+                ],
+                visitor_info: "Aikštė yra atvira visą parą. Nėra bilieto mokesčio.",
+                category: "Kultūros centrai"
+            },
+            "VU": {
+                title: "VU",
+                images: ["assets/vilniaus_universitetas_1.jpg", "assets/vilniaus_universitetas_2.jpg"],
+                description: "Vilniaus universitetas yra vienas iš seniausių universitetų Europoje, garsėjantis savo ilga istorija ir reikšminga akademine tradicija.",
+                lat: 54.682705922945615, 
+                lon: 25.28745377906526,
+                address: "Universiteto g. 3, Vilnius, Lietuva",
+                history: "Vilniaus universitetas buvo įkurtas 1579 metais ir per visą savo istoriją tapo svarbiu mokslo ir kultūros centru tiek Lietuvoje, tiek visoje Europoje.",
+                nearby_attractions: [
+                    "Gedimino pilies bokštas",
+                    "Vilniaus Katedra",
+                    "Lukiškių aikštė"
+                ],
+                visitor_info: "Atviras tik su grupėmis, darbo valandos 9:00-17:00. Galima aplankyti su gidu.",
+                category: "Mokslas"
+            },
+            "Televizijos bokštas": {
+                title: "Televizijos bokštas",
+                images: ["assets/tv_bokstas_1.jpg", "assets/tv_bokstas_2.jpg"],
+                description: "Vilniaus televizijos bokštas yra aukščiausias pastatas Lietuvoje ir vienas iš svarbiausių Vilniaus simbolių. Iš bokšto atsiveria nuostabūs miesto vaizdai.",
+                lat: 54.687242601561834,
+                lon: 25.214894261299595, 
+                address: "Vilniaus televizijos bokštas, Vilnius, Lietuva",
+                history: "Televizijos bokštas buvo pastatytas 1980-aisiais metais ir tapo simboliu kovos už nepriklausomybę 1991 metais. Tai ne tik televizijos signalų perdavimo centras, bet ir populiari turistų lankoma vieta.",
+                nearby_attractions: [
+                    "Pūčkoriai atodanga",
+                    "Trijų kryžių kalnas",
+                    "Vilniaus universitetas"
+                ],
+                visitor_info: "Atviras kasdien 9:00-21:00. Bilieto kaina: 6 EUR. Galima užlipti į apžvalgos aikštelę.",
+                category: "Architektūra"
+            },
+            "Pūčkoriai atodanga": {
+                title: "Pūčkoriai atodanga",
+                images: ["assets/puckoriai_atodanga_1.jpg", "assets/puckoriai_atodanga_2.jpg"],
+                description: "Pūčkoriai atodanga – viena iš didžiausių ir įspūdingiausių atodangų Lietuvoje. Tai natūralus geologinis objektas, kur galima pasigrožėti nuostabia gamta ir miestu.",
+                lat: 54.6923301837204,
+                lon: 25.353664901203942,
+                address: "Pūčkoriai atodanga, Vilnius, Lietuva",
+                history: "Atodanga susidarė per tūkstančius metų, o dabar tai viena iš pagrindinių turistinių vietų Vilniuje. Ji yra žinoma dėl savo kraštovaizdžių ir geologinio svarbumo.",
+                nearby_attractions: [
+                    "Vilniaus televizijos bokštas",
+                    "Trijų kryžių kalnas",
+                    "Vilniaus universitetas"
+                ],
+                visitor_info: "Atviras visą parą, tačiau rekomenduojama aplankyti dienos metu. Lankymas nemokamas.",
+                category: "Gamta"
+            },
+            "Džiaugsmas": {
+                title: "Džiaugsmas",
+                images: ["assets/dziaugsmas_restoranas_1.jpg", "assets/dziaugsmas_restoranas_2.jpg"],
+                description: "Džiaugsmas restoranas – tai vieta, kur galima mėgautis autentiška lietuviška virtuve ir tradiciniais patiekalais.",
+                lat: 54.68303501483835, 
+                lon: 25.280635572949638,
+                address: "Džiaugsmas restoranas, Vilnius, Lietuva",
+                history: "Restoranas įsikūrė senamiestyje ir tapo populiaria vieta tiek vietiniams gyventojams, tiek turistams.",
+                nearby_attractions: [
+                    "Gedimino pilies bokštas", 
+                    "Vėtrungės paminklas",
+                    "Vilniaus senamiestis"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 12:00-22:00. Rekomenduojame rezervuoti stalą iš anksto.",
+                category: "Restoranai"
+            },
+            "Basilico restoranas": {
+                title: "Basilico restoranas",
+                images: ["assets/basilico_restoranas_1.jpg", "assets/basilico_restoranas_2.jpg"],
+                description: "Basilico restoranas – tai itališkos virtuvės perlas, garsėjantis savo šviežiais ir skaniais patiekalais.",
+                lat: 54.685737209343976,
+                lon: 25.259672605474503,
+                address: "Basilico restoranas, Vilnius, Lietuva",
+                history: "Restoranas įkurtas 2005 metais ir nuo to laiko pelnė daugybę apdovanojimų už kokybę ir autentiškumą.",
+                nearby_attractions: [
+                    "Vilniaus universitetas",
+                    "Gedimino pilies bokštas",
+                    "Trijų kryžių kalnas"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 11:00-22:00. Svarbu – rekomenduojame pasikonsultuoti dėl patiekalų pasirinkimo.",
+                category: "Restoranai"
+            },
+            "Bistro 18": {
+                title: "Bistro 18",
+                images: ["assets/bistro_18_1.jpg", "assets/bistro_18_2.jpg"],
+                description: "Bistro 18 – tai modernus restoranas, kuris siūlo įvairius tarptautinius patiekalus su šiuolaikinio dizaino akcentais.",
+                lat: 54.68099901777751,
+                lon: 25.28530058644467,
+                address: "Bistro 18, Vilnius, Lietuva",
+                history: "Bistro 18 atidarytas 2008-aisiais ir per tuos metus tapo vienu populiariausių restoranų Vilniuje.",
+                nearby_attractions: [
+                    "Gedimino prospektas", 
+                    "Tymo turgus"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 10:00-22:00. Svarbu – galite užsisakyti ir išsinešti.",
+                category: "Restoranai"
+            },
+            "Sushi Express": {
+                title: "Sushi Express",
+                images: ["assets/sushi_express_1.jpg", "assets/sushi_express_2.jpg"],
+                description: "Sushi Express – greitas ir šviežias sushi restoranas, kuris patiks visiems sushi mėgėjams.",
+                lat: 54.679244022939095,
+                lon: 25.28534718539165,
+                address: "Vokiečių g. 7, Vilnius, Lietuva",
+                history: "Sushi Express atidarytas 2015 metais ir nuo tada tapo viena iš populiariausių sushi vietų mieste.",
+                nearby_attractions: [
+                    "Vingio parkas",
+                    "Gedimino pilies bokštas"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 11:00-22:00. Galima užsisakyti ir į namus.",
+                category: "Restoranai"
+            },
+            "Dolce Vita": {
+                title: "Dolce Vita",
+                images: ["assets/la_dolce_vita_1.jpg", "assets/la_dolce_vita_2.jpg"],
+                description: "Dolce Vita – tai itališka vieta, kurioje galite mėgautis ne tik maistu, bet ir unikaliu desertų pasirinkimu.",
+                lat: 54.7048214077641,
+                lon: 25.31182018344727,
+                address: "Antakalnio g. 39, Vilnius, Lietuva",
+                history: "Restoranas įkurtas 2014 metais ir per tuos metus tapo labai populiarus dėl savo desertų ir itališkų patiekalų.",
+                nearby_attractions: [
+                    "Vilniaus senamiestis", 
+                    "Gedimino pilies bokštas"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 11:00-22:00.",
+                category: "Desertai"
+            },
+            "Neringa restoranas": {
+                title: "Neringa restoranas",
+                images: ["assets/neringa_restoranas_1.jpg", "assets/neringa_restoranas_2.jpg"],
+                description: "Neringa restoranas – tai vieta, kur galite pasimėgauti tiek vietinėmis, tiek tarptautinėmis virtuvėmis.",
+                lat: 54.68801699162789,
+                lon: 25.275779626930014,
+                address: "Neringa restoranas, Vilnius, Lietuva",
+                history: "Neringa restoranas įkurtas 2007 metais ir tapo vienu iš geriausių pasirinkimų tiek vietiniams, tiek turistams.",
+                nearby_attractions: [
+                    "Vilniaus universitetas", 
+                    "Lukiškių aikštė"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 10:00-22:00.",
+                category: "Restoranai"
+            },
+            "Grand Hotel Vilnius": {
+                title: "Grand Hotel Vilnius",
+                images: ["assets/grand_hotel_vilnius_1.jpg", "assets/grand_hotel_vilnius_2.jpg"],
+                description: "Grand Hotel Vilnius – tai prabangus viešbutis, siūlantis aukščiausios kokybės paslaugas ir išskirtinį aptarnavimą.",
+                lat: 54.684833416119865, 
+                lon: 25.28604806129972,
+                address: "Grand Hotel Vilnius, Vilnius, Lietuva",
+                history: "Viešbutis įkurtas 2003 metais ir greitai tapo vienu iš geriausių prabangos pasirinkimų mieste.",
+                nearby_attractions: [
+                    "Gedimino pilies bokštas", 
+                    "Vilniaus katedra"
+                ],
+                visitor_info: "Atviras visą savaitę, darbo valandos: 24 val. Įsikūręs netoli pagrindinių miesto lankytinų vietų.",
+                category: "Viešbučiai"
+            },
+            "Radisson Blu Hotel": {
+                title: "Radisson Blu Hotel",
+                images: ["assets/radisson_blu_lietuva_hotel_1.jpg", "assets/radisson_blu_lietuva_hotel_2.jpg"],
+                description: "Radisson Blu Lietuva Hotel siūlo aukščiausios klasės paslaugas su nuostabiu vaizdu į Vilniaus senamiestį.",
+                lat: 54.69505518852132,
+                lon: 25.275636080329562,
+                address: "Radisson Blu Lietuva Hotel, Vilnius, Lietuva",
+                history: "Viešbutis atidarytas 2006 metais ir tapo vienu iš pirmaujančių tarptautinių tinklų atstovų Lietuvoje.",
+                nearby_attractions: [
+                    "Vokiečių gatvė", 
+                    "Gedimino prospektas"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 24 val. Svečiai gali pasimėgauti SPA paslaugomis ir restoranų pasirinkimu.",
+                category: "Viešbučiai"
+            },
+            "Novotel Vilnius": {
+                title: "Novotel Vilnius",
+                images: ["assets/novotel_vilnius_1.jpg", "assets/novotel_vilnius_2.jpg"],
+                description: "Novotel Vilnius siūlo modernius ir patogius kambarius, idealiai tinkančius tiek verslo, tiek poilsio kelionėms.",
+                lat: 54.68698961444916,
+                lon: 25.280214630619753,
+                address: "Novotel Vilnius, Vilnius, Lietuva",
+                history: "Atidarytas 2009 metais, Novotel tapo populiarus tarp tarptautinių verslo svečių ir turistų.",
+                nearby_attractions: [
+                    "Vingio parkas",
+                    "Lukiškių aikštė"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 24 val. Viešbučio svečiai gali pasinaudoti treniruoklių sale ir restoranu.",
+                category: "Viešbučiai"
+            },
+            "Hilton Garden Inn Vilnius City Centre": {
+                title: "Hilton Garden Inn Vilnius City Centre",
+                images: ["assets/hilton_garden_inn_vilnius_1.jpg", "assets/hilton_garden_inn_vilnius_2.jpg"],
+                description: "Hilton Garden Inn Vilnius City Centre yra modernus ir stilingas viešbutis, kuris puikiai tinka tiek verslo, tiek poilsio kelionėms.",
+                lat: 54.68871310961665,
+                lon: 25.268173660718695,
+                address: "Hilton Garden Inn Vilnius City Centre, Vilnius, Lietuva",
+                history: "Viešbutis atidarytas 2017 metais ir tapo populiarus dėl savo patogios vietos ir aukščiausios klasės paslaugų.",
+                nearby_attractions: [
+                    "Gedimino pilies bokštas",
+                    "Vilniaus katedra"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 24 val. Svečiai gali pasinaudoti verslo centru ir treniruoklių sale.",
+                category: "Viešbučiai"
+            },
+            "Artis Centrum Hotels": {
+                title: "Artis Centrum Hotels",
+                images: ["assets/artis_centrum_hotels_1.jpg", "assets/artis_centrum_hotels_2.jpg"],
+                description: "Artis Centrum Hotels – elegantiškas ir jaukus viešbutis su tradiciniais elementais ir moderniomis paslaugomis.",
+                lat: 54.68346972278104,
+                lon: 25.28295060916411,
+                address: "Artis Centrum Hotels, Vilnius, Lietuva",
+                history: "Viešbutis buvo atidarytas 2000 metais ir tapo žinomas dėl savo jaukios atmosferos ir aukštos kokybės aptarnavimo.",
+                nearby_attractions: [
+                    "Vilniaus senamiestis", 
+                    "Gedimino prospektas"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 24 val. Galite pasinaudoti SPA paslaugomis ir restoranais.",
+                category: "Viešbučiai"
+            },
+            "Congress Avenue hotel": {
+                title: "Congress Avenue hotel",
+                images: ["assets/hotel_congress_1.jpg", "assets/hotel_congress_2.jpg"],
+                description: "Hotel Congress – tai modernus viešbutis, kuris siūlo viską, ko reikia tiek verslo, tiek poilsio kelionėms.",
+                lat: 54.686639411596595, 
+                lon: 25.281678699359034,
+                address: "Hotel Congress, Vilnius, Lietuva",
+                history: "Hotel Congress atidarytas 2005 metais ir tapo gerai žinomu viešbučiu miesto centre.",
+                nearby_attractions: [
+                    "Gedimino pilies bokštas", 
+                    "Vingio parkas"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 24 val. Svečiai gali naudotis verslo centru ir sporto sale.",
+                category: "Viešbučiai"
+            },
+            "Hotel Pacai": {
+                title: "Hotel Pacai",
+                images: ["assets/hotel_pacai_1.jpg", "assets/hotel_pacai_2.jpg"],
+                description: "Hotel Pacai – tai prabangus viešbutis, įsikūręs istoriniame Vilniaus centre, siūlantis komfortą ir išskirtinį aptarnavimą.",
+                lat: 54.68026484931373,
+                lon: 25.2885185715597,
+                address: "Hotel Pacai, Vilnius, Lietuva",
+                history: "Viešbutis buvo atidarytas 2018 metais ir greitai tapo vienu iš populiariausių prabangos pasirinkimų mieste.",
+                nearby_attractions: [
+                    "Vilniaus katedra", 
+                    "Gedimino pilies bokštas"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 24 val. Galima pasinaudoti prabangiais restorananais ir SPA paslaugomis.",
+                category: "Viešbučiai"
+            },
+            "Grand Hotel Vilnius": {
+                title: "Grand Hotel Vilnius",
+                images: ["assets/kempinski_hotel_cathedral_square_1.jpg", "assets/kempinski_hotel_cathedral_square_2.jpg"],
+                description: "Grand Hotel Vilnius – tai vienas iš geriausių prabangių viešbučių Vilniuje, siūlantis nepaprastą komfortą ir paslaugų kokybę.",
+                lat: 54.68494122054211,
+                lon: 25.28648345678966,
+                address: "Kempinski Hotel Cathedral Square, Vilnius, Lietuva",
+                history: "Viešbutis atidarytas 2012 metais ir tapo viena iš prabangiausių vietų miesto centre.",
+                nearby_attractions: [
+                    "Vilniaus katedra", 
+                    "Gedimino pilies bokštas"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 24 val. Svečiai gali pasinaudoti restoranais, SPA ir verslo centru.",
+                category: "Viešbučiai"
+            },
+            "Urbihop Hotel": {
+                title: "Urbihop Hotel",
+                images: ["assets/urbihop_hotel_1.jpg", "assets/urbihop_hotel_2.jpg"],
+                description: "Urbihop Hotel – tai modernus, ekologinis ir stilingas viešbutis, orientuotas į jaunus keliautojus.",
+                lat: 54.70802305125782,
+                lon: 25.238705699369994,
+                address: "Urbihop Hotel, Vilnius, Lietuva",
+                history: "Viešbutis buvo atidarytas 2016 metais ir tapo populiaru tarp jaunų keliautojų dėl savo patogios vietos ir modernių paslaugų.",
+                nearby_attractions: [
+                    "Vingio parkas", 
+                    "Vilniaus universitetas"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 24 val.",
+                category: "Viešbučiai"
+            },
+            "Conti Hotel": {
+                title: "Conti Hotel",
+                images: ["assets/conti_hotel_1.jpg", "assets/conti_hotel_2.jpg"],
+                description: "Conti Hotel – tai patogus ir modernus viešbutis, kuris siūlo aukščiausios kokybės paslaugas ir komfortą.",
+                lat: 54.675441635718606,
+                lon: 25.28253208217367,
+                address: "Conti Hotel, Vilnius, Lietuva",
+                history: "Viešbutis buvo atidarytas 2010 metais ir tapo vienu iš populiariausių pasirinkimų verslo ir poilsio keliautojams.",
+                nearby_attractions: [
+                    "Gedimino prospektas", 
+                    "Vingio parkas"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 24 val.",
+                category: "Viešbučiai"
+            },
+            "Hotel Vilnia": {
+                title: "Hotel Vilnia",
+                images: ["assets/hotel_vilnia_1.jpg", "assets/hotel_vilnia_2.jpg"],
+                description: "Hotel Vilnia – tai modernus viešbutis su nuostabiu vaizdu į Vilniaus senamiestį, kuris siūlo patogias ir elegantiškas paslaugas.",
+                lat: 54.684965521870986,
+                lon: 25.292703026929924,
+                address: "Hotel Vilnia, Vilnius, Lietuva",
+                history: "Viešbutis buvo įkurtas 2013 metais ir tapo vienu iš patogiausių pasirinkimų tiek turistams, tiek verslo keliautojams.",
+                nearby_attractions: [
+                    "Gedimino prospektas", 
+                    "Vilniaus katedra"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 24 val.",
+                category: "Viešbučiai"
+            },
+            "Mo muziejus": {
+                title: "Mo muziejus",
+                images: ["assets/mo_muziejus_1.jpg", "assets/mo_muziejus_2.jpg"],
+                description: "Mo muziejus – tai šiuolaikinio meno muziejus, kuriame galima pamatyti tiek lietuvių, tiek užsienio menininkų kūrinius.",
+                lat: 54.679510058671184,
+                lon: 25.27742746217078,
+                address: "Mo muziejus, Vilnius, Lietuva",
+                history: "Atidarytas 2018 metais, Mo muziejus greitai tapo vienu iš svarbiausių šiuolaikinio meno centrų Lietuvoje.",
+                nearby_attractions: [
+                    "Vilniaus katedra", 
+                    "Gedimino pilies bokštas"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 10:00-18:00. Rekomenduojama įsigyti bilietus iš anksto.",
+                category: "Muziejai"
+            },
+            "Dailės akademija": {
+                title: "Dailės akademija",
+                images: ["assets/vilniaus_dailes_academija_1.jpg", "assets/vilniaus_dailes_academija_2.jpg"],
+                description: "Vilniaus dailės akademija – tai viena seniausių ir prestižiškiausių meno mokyklų Baltijos šalyse.",
+                lat: 54.68396301154272,
+                lon: 25.29411077516717,
+                address: "Vilniaus dailės akademija, Vilnius, Lietuva",
+                history: "Įkurta 1793 metais, ši institucija tapo svarbia meno ir dizaino švietimo vieta Lietuvoje.",
+                nearby_attractions: [
+                    "Vingio parkas", 
+                    "Gedimino prospektas"
+                ],
+                visitor_info: "Atviras darbo dienomis, darbo valandos: 09:00-17:00. Galite aplankyti parodas ir meno renginius.",
+                category: "Mokslas"
+            },
+            "Vaidilos teatras": {
+                title: "Vaidilos teatras",
+                images: ["assets/vaidilos_teatras_1.jpg", "assets/vaidilos_teatras_2.jpg"],
+                description: "Vaidilos teatras – tai vienas iš seniausių teatrų Vilniuje, siūlantis įvairius spektaklius ir kultūrinius renginius.",
+                lat: 54.689459408140465, 
+                lon: 25.276419645959745,
+                address: "Vaidilos teatras, Vilnius, Lietuva",
+                history: "Teatras įkurtas 1950 metais ir tapo žinomas dėl savo aukštos kokybės pasirodymų ir kultūrinės reikšmės Lietuvoje.",
+                nearby_attractions: [
+                    "Gedimino pilies bokštas",
+                    "Lukiškių aikštė"
+                ],
+                visitor_info: "Atviras pagal tvarkaraštį, darbo valandos priklauso nuo spektaklių. Rekomenduojame įsigyti bilietus iš anksto.",
+                category: "Teatrai"
+            },
+            "Tuskulėnų dvaras": {
+                title: "Tuskulėnų dvaras",
+                images: ["assets/tuskulenu_dvaras_1.jpg", "assets/tuskulenu_dvaras_2.jpg"],
+                description: "Tuskulėnų dvaras – tai istorinis dvaras, kuriame dabar veikia muziejus, pasakojantis apie Lietuvos istoriją ir kultūrą.",
+                lat: 54.69897547144449,
+                lon: 25.304085958874253,
+                address: "Tuskulėnų dvaras, Vilnius, Lietuva",
+                history: "Dvaras buvo pastatytas XIX a., tačiau šiandien jis tapo populiaria kultūros ir muziejaus erdve.",
+                nearby_attractions: [
+                    "Vingio parkas",
+                    "Vilniaus universitetas"
+                ],
+                visitor_info: "Atviras kasdien, darbo valandos: 10:00-18:00. Galite aplankyti parodas ir sužinoti apie Lietuvos istoriją.",
+                category: "Muziejai"
+            },
+            "Dramos teatras": {
+                title: "Dramos teatras",
+                images: ["assets/lietuvos_nacionalinis_dramos_teatras_1.jpg", "assets/lietuvos_nacionalinis_dramos_teatras_2.jpg"],
+                description: "Lietuvos nacionalinis dramos teatras – tai vienas iš prestižinių teatrų Lietuvoje, kuris siūlo aukščiausios kokybės spektaklius ir kultūrinius renginius.",
+                lat: 54.68662293434003,
+                lon: 25.28408738507955,
+                address: "Lietuvos nacionalinis dramos teatras, Vilnius, Lietuva",
+                history: "Teatras įkurtas 1940 metais ir tapo žinomas dėl savo kultūrinės įtakos ir aukšto lygio pasirodymų.",
+                nearby_attractions: [
+                    "Gedimino pilies bokštas",
+                    "Vilniaus senamiestis"
+                ],
+                visitor_info: "Atviras pagal tvarkaraštį, darbo valandos priklauso nuo spektaklių. Rekomenduojama įsigyti bilietus iš anksto.",
+                category: "Teatrai"
+            },
+        };
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 54.6897, lng: 25.2855 },
+            zoom: 13,
+            styles: []
+        });
+
+        Object.keys(places).forEach(function(title) {
+            var place = places[title];
+            addMarker(place);
+        });
+
+        populatePlacesList();
+
+        checkSession();
+    }
+
+    function addMarker(place) {
+        var marker = new google.maps.Marker({
+            position: { lat: place.lat, lng: place.lon },
+            map: map,
+            title: place.title
+        });
+        marker.addListener('click', function() {
+            openModal(place.title);
+        });
+    }
+    function populatePlacesList() {
+        var placesList = document.getElementById('places-list');
+        Object.keys(places).forEach(function(title) {
+            var place = places[title];
+
+            var placeItem = document.createElement('div');
+            placeItem.className = 'place-item';
+            placeItem.setAttribute('data-category', place.category);
+            placeItem.setAttribute('data-title', place.title);
+
+            var img = document.createElement('img');
+            img.src = place.images[0];
+            img.alt = place.title;
+
+            var h3 = document.createElement('h3');
+            h3.textContent = place.title;
+
+            var p = document.createElement('p');
+            p.textContent = place.description.substring(0, 100) + '...';
+
+            var button = document.createElement('button');
+            button.textContent = 'Daugiau';
+            button.addEventListener('click', function() {
+                openModal(place.title);
+            });
+
+            placeItem.appendChild(img);
+            placeItem.appendChild(h3);
+            placeItem.appendChild(p);
+            placeItem.appendChild(button);
+            placesList.appendChild(placeItem);
+        });
+    }
+    function openModal(title) {
+        var place = places[title] || {
+            title: "Nežinoma vieta",
+            images: [],
+            description: "Aprašymas nėra prieinamas.",
+            lat: 0,
+            lon: 0,
+            address: "",
+            history: "",
+            nearby_attractions: [],
+            visitor_info: ""
+        };
+
+        document.getElementById('modalTitle').textContent = place.title;
+
+        var modalImages = document.getElementById('modalImages');
+        modalImages.innerHTML = '';
+        place.images.forEach(function(imageUrl) {
+            var img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = place.title;
+            modalImages.appendChild(img);
+        });
+
+        document.getElementById('modalDescription').textContent = place.description;
+        document.getElementById('modalCoordinates').textContent = 'Koordinatės: ' + place.lat + ', ' + place.lon;
+        document.getElementById('modalAddress').innerHTML = '<strong>Adresas:</strong> ' + place.address;
+        document.getElementById('modalHistory').innerHTML = '<strong>Istorija:</strong> ' + place.history;
+        document.getElementById('modalNearbyAttractions').innerHTML = '<strong>Artimiausios lankytinos vietos:</strong> ' + place.nearby_attractions.join(', ');
+        document.getElementById('modalVisitorInfo').innerHTML = '<strong>Lankytojų informacija:</strong> ' + place.visitor_info;
+
+        document.getElementById('myModal').style.display = 'block';
+    }
+
+    document.querySelector('.close').addEventListener('click', function() {
+        document.getElementById('myModal').style.display = 'none';
+    });
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('myModal')) {
+            document.getElementById('myModal').style.display = 'none';
+        }
+    }
+    function filterPlaces() {
+        var selectedCategory = document.getElementById('category').value;
+        var allItems = document.querySelectorAll('.place-item');
+        allItems.forEach(function(item) {
+            if (selectedCategory === 'all' || item.getAttribute('data-category') === selectedCategory) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+        const authForm = document.getElementById('authForm');
+        const authContainer = document.getElementById('auth-container');
+        const welcomeMessage = document.getElementById('welcome-message');
+        const welcomeUsername = document.getElementById('welcome-username');
+        const logoutButton = document.getElementById('logout-button');
+
+        loginTab.addEventListener('click', function() {
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
+            authForm.setAttribute('data-mode', 'login');
+            authForm.querySelector('button[type="submit"]').textContent = 'Prisijungti';
+            authForm.reset();
+        });
+
+        registerTab.addEventListener('click', function() {
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
+            authForm.setAttribute('data-mode', 'register');
+            authForm.querySelector('button[type="submit"]').textContent = 'Registruotis';
+            authForm.reset();
+        });
+
+        authForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const mode = authForm.getAttribute('data-mode');
+            const formData = new FormData(authForm);
+            const data = {
+                username: formData.get('username'),
+                password: formData.get('password')
+            };
+
+            let url = '';
+            if (mode === 'login') {
+                url = 'login.php';
+            } else if (mode === 'register') {
+                url = 'register.php';
+            }
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                alert(result.message);
+                if (result.status === 'success' && mode === 'login') {
+                    checkSession();
+                } else if (result.status === 'success' && mode === 'register') {
+                    loginTab.click();
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Įvyko klaida. Bandykite dar kartą.');
+            });
+        });
+
+        logoutButton.addEventListener('click', function() {
+            fetch('logout.php', { method: 'GET' })
+                .then(() => {
+                    welcomeMessage.style.display = 'none';
+                    authContainer.style.display = 'block';
+                })
+                .catch(err => console.error(err));
+        });
+    });
+
+    function checkSession() {
+        fetch('check_session.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'logged_in') {
+                document.getElementById('auth-container').style.display = 'none';
+                document.getElementById('welcome-message').style.display = 'block';
+                document.getElementById('welcome-username').textContent = data.username;
+            } else {
+                document.getElementById('auth-container').style.display = 'block';
+                document.getElementById('welcome-message').style.display = 'none';
+            }
+        })
+        .catch(err => console.error(err));
+    }
+    </script>
+</body>
+</html>

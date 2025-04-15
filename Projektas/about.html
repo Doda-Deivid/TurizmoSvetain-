@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apie mus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+           body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; 
+            color: #e0e0e0; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(145deg, #1a1a1a, #212121); 
+            padding: 30px 0;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            color: #ecf0f1;
+            position: relative;
+            z-index: 10;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header nav ul li {
+            margin: 0 12px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        header nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            padding: 12px 18px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            text-align: center;
+            display: block;
+        }
+
+        header nav ul li a:first-child {
+            background-color: initial;
+        }
+
+        header nav ul li a.active {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        header nav ul li a:hover {
+            background-color: #2980b9;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        main {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #181818;
+            border-radius: 15px;
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2 {
+            color: #ecf0f1;
+            margin-bottom: 30px;
+            font-size: 3.2em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        p {
+            color: #bdc3c7;
+            font-size: 1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        ul li a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            background-color: #2c3e50;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-member img {
+        width: 300px;   
+        height: 300px;    
+        object-fit: cover;
+        margin: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .team-member h3 {
+            color: #3498db;
+            font-size: 1.8em;
+            margin: 0;
+        }
+
+        .team-member p {
+            font-size: 1.1em;
+            color: #ecf0f1;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        footer p {
+            font-size: 1.2em;
+        }
+
+        .social-share {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .social-share a {
+            text-decoration: none;
+            font-size: 2.5em;
+            margin: 0 25px;
+            color: #ecf0f1;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-share a:hover {
+            color: #e74c3c;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Pagrindinis</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> Apie mus</a></li>
+                <li><a href="routes.html"><i class="fas fa-map-marked-alt"></i> Maršrutai</a></li>
+                <li><a href="contacts.html"><i class="fas fa-phone-alt"></i> Kontaktai</a></li>
+                <li><a href="faq.html"><i class="fas fa-question-circle"></i> D.U.K.</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1>Apie mus</h1>
+            <p>Mes esame entuziastų komanda, šią svetainę sukurėm, kad padėtume turistams atrasti Lietuvos grožį. Mes siekiame suteikti išsamią informaciją ir praktiškas rekomendacijas kiekvienam turistui, norinčiam geriau pažinti mūsų šalį.</p>
+
+            <h2>Mūsų tikslai</h2>
+            <ul>
+                <li>Teikti tikslią informaciją apie vietas ir maršrutus, kad turistai galėtų geriau planuoti savo keliones.</li>
+                <li>Siūlyti unikalius ir neįprastus kelionės maršrutus, kad turistai galėtų patirti Lietuvą iš naujos perspektyvos.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Komanda</h2>
+            <div class="team-member">
+                <img src="assets/doda.jpg" alt="Deivid Doda">
+                <div>
+                    <h3>Deivid Doda</h3>
+                    <p>Įkūrėjas & Vadovas</p>
+                    <p>Mano vardas Deivid Doda, ir aš esu šios platformos įkūrėjas. Aš turiu ilgametę patirtį kelionių srityje, dirbdamas su įvairiais projektais, kurie susiję su turizmu, viešbučių valdymu ir kelionių technologijomis. Mano tikslas buvo sukurti šią platformą, kad turistams būtų lengviau atrasti geriausias keliones ir vietas Lietuvoje. Esu įsitikinęs, kad kelionės turi būti įkvepiančios ir suteikiančios ne tik žinių, bet ir nepamirštamų įspūdžių.</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="assets/jae.jpg" alt="Justinas Alisauskas">
+                <div>
+                    <h3>Justinas Ališauskas</h3>
+                    <p>Įkūrėjas & Vadovas</p>
+                    <p>Mano vardas Justinas Ališauskas, ir aš esu vienas iš šios platformos įkūrėjų bei vadovų. Turiu daugelio metų patirtį turizmo srityje, organizuojant vietines ir tarptautines keliones, taip pat kuriant inovatyvius sprendimus, padedančius atrasti įspūdingiausias Lietuvos vietas. Mano tikslas – užtikrinti, kad keliautojai galėtų lengvai planuoti savo maršrutus ir mėgautis nepamirštamais įspūdžiais. Esu įsitikinęs, jog pažindami įvairius šalies kampelius, mes plečiame savo akiratį ir kuriame turtingesnį ryšį su Lietuvos gamta, istorija bei kultūra. </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Maršrutų Svetainė | Visos teisės saugomos</p>
+        <div class="social-share">
+            <a href="https://www.facebook.com/deividas.doda.7/" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/scamlxrd" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+</body>
+</html>

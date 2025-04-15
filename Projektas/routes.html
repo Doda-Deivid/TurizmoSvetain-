@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maršrutai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(145deg, #1a1a1a, #212121); 
+            padding: 30px 0;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            color: #ecf0f1;
+            position: relative;
+            z-index: 10;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header nav ul li {
+            margin: 0 12px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        header nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            padding: 12px 18px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            text-align: center;
+            display: block;
+        }
+
+        header nav ul li a.active {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        header nav ul li a:hover {
+            background-color: #2980b9;
+            color: #fff;
+            transform: scale(1.05);
+        }
+        main {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #181818;
+            border-radius: 15px;
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2 {
+            color: #ecf0f1;
+            margin-bottom: 30px;
+            font-size: 3.2em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        .route-card {
+            background-color: #2c3e50;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .route-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .route-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ecf0f1;
+        }
+
+        .route-description {
+            font-size: 1.1em;
+            color: #bdc3c7;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .route-extra {
+            font-size: 1em;
+            margin-bottom: 8px;
+            color: #bdc3c7;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 40px;
+            box-shadow: 0 -6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer p {
+            font-size: 1.2em;
+        }
+
+        .social-share {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .social-share a {
+            text-decoration: none;
+            font-size: 2.5em;
+            margin: 0 25px;
+            color: #ecf0f1;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-share a:hover {
+            color: #e74c3c;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Pagrindinis</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> Apie mus</a></li>
+                <li><a href="routes.html" class="active"><i class="fas fa-map-marked-alt"></i> Maršrutai</a></li>
+                <li><a href="contacts.html"><i class="fas fa-phone-alt"></i> Kontaktai</a></li>
+                <li><a href="faq.html"><i class="fas fa-question-circle"></i> D.U.K.</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1>Populiarūs pažintiniai takai</h1>
+            <div class="route-card">
+                <div class="route-title">Varnikų pažintinis takas</div>
+                <div class="route-description">
+                    Ar žinojai, kad šalia Trakų (apie 20 km nuo Vilniaus) yra Varnikų pažintinis takas? 
+                    Šis takas puikiai tinka tiek keliaujantiems pėstute, tiek keliaujantiems dviračiu. 
+                    Jeigu nori nors trumpam atitrūkti nuo miesto šurmulio – ši vieta puikus pasirinkimas! 
+                    Takas tinka pasivaikščioti vieniems, su šeima, vaikais, ar su draugais. Įvedus 
+                    google „Varnikų takas” jums bus atvaizduotas visas maršrutas. Apie 3,5 km per Ilgelio 
+                    pelkę besitęsiantis takas visus čia atvyksiančius poilsiautojus veda ne tik per 
+                    nuostabius miškus ir pelkę, bet ir per įvairiapusišką draustinio įvairovę, kuri 
+                    apima pievas ir ežerėlius. Kad grožėtis gamta būtų dar patogiau, pažintiniame take 
+                    rasi stebėjimo aikšteles ir 10 poilsio vietų. Patikėk, po tokio žygio kibinai taps 
+                    dar skanesni.
+                </div>
+                <div class="route-extra"><strong>Tako ilgis:</strong> 3,5 km</div>
+                <div class="route-extra"><strong>Adresas:</strong> Varnikų kaimas (Trakų kryptis)</div>
+                <div class="route-extra"><strong>Nuotraukos:</strong><img src="assets/varniku_takas.jpg" alt="Varnikų pažintinis takas" style="width:100%; border-radius: 8px; margin-bottom: 15px;">
+                </div>
+            </div>
+
+            <div class="route-card">
+                <div class="route-title">Dubravos rezervatinė apyrubė</div>
+                <div class="route-description">
+                    Dubravos rezervatinė apyrubė yra unikali vieta. Šiame gamtiniame valstybiniame 
+                    rezervate, kuris priklauso Kauno marių regioniniam parkui, jau daugiau nei 50 metų 
+                    neprisilietęs joks žmogus. Gamta čia formuojasi pati, todėl ši vieta tokia ir žavi. 
+                    Dubravos rezervatinė apyrubė – vienintelė tokia Lietuvoje ir apima 120 ha plotą. 
+                    Apie ketvirtadalį teritorijos užima pelkė. Einant pažintiniu taku išties stebina 
+                    medžių aukštis, (net iki 150 m.) išgriuvę apsamanėję medžiai. Čia tikrai gali 
+                    pasijusti lyg nusikėlęs laiku į seną ir labai gražią girią.
+                </div>
+                <div class="route-extra"><strong>Tako ilgis:</strong> 1,9 km</div>
+                <div class="route-extra"><strong>Adresas:</strong> Dubravos miškas, Samylų sen., Kauno r.</div>
+                <div class="route-extra"><strong>Nuotraukos:</strong> <img src="assets/Dubravos.jpg" alt="Dubravos rezervatinė apyrubė" style="width:100%; border-radius: 8px; margin-bottom: 15px;"></div>
+            </div>
+
+            <div class="route-card">
+                <div class="route-title">Pūčkorių atodanga – pažintinis takas</div>
+                <div class="route-description">
+                    Tai viena aukščiausių ir įspūdingiausių atodangų Lietuvoje. Važiuojant į šią vietą 
+                    rekomenduojame paruošti ir pasiimti su savimi termosą gėrimo ar kavos, šiek tiek 
+                    užkandukų, nes mūsų visų patogumui čia yra įrengtos terasos bei aikštelės su 
+                    pavėsinėmis. Galima atvykti ne tik su šeima, vaikais, draugais, bet ir vienam, 
+                    pasiėmus kokią gerą knygą, atsisėdus ant suoliuko, ramiai, gamtos apsuptyje 
+                    paskaityti bei pabūti su savimi. Nuostabaus grožio vieta, pažintinis takas vingiuoja 
+                    įvairiomis vietomis – miškais, palei upę, lygumas ir kalvas, krioklius, griuvėsius. 
+                    Pamatysi įvairių gražių gamtos vaizdų, bei galėsi daugiau sužinoti apie šią vietą 
+                    perskaičius ten esančius informacinius stendus. Po aktyvaus laiko gamtoje, visada 
+                    puiki mintis kokybiškai pailsėti, tad visus puikius viešbučių pasiūlymus Vilniuje 
+                    rasi čia: poilsio pasiūlymai Vilniuje.
+                </div>
+                <div class="route-extra"><strong>Tako ilgis:</strong> apie 6 km</div>
+                <div class="route-extra"><strong>Adresas:</strong> Belmonto g. 17, Vilnius 01206</div>
+                <div class="route-extra"><strong>Nuotraukos:</strong> <img src="assets/puckoriu.jpg" alt="Pūčkorių atodanga" style="width:100%; border-radius: 8px; margin-bottom: 15px;"></div>
+            </div>
+
+            <div class="route-card">
+                <div class="route-title">Jurkiškio upelio pažintinis takas</div>
+                <div class="route-description">
+                    Jeigu nemėgsti daug vaikščioti, bet nori gražių vaizdų – šis takas puikiai tiks. Vienas 
+                    geriausių metų laikų aplankyti šią vietą, turbūt vasarą, kai viskas aplink žalia. 
+                    Tačiau čia gera atvykti ir kitais metų sezonais. Visoje teritorijoje įrengti mediniai 
+                    lapteliai, suoliukai, takeliai. NoriuNoriuNoriu poilsio ekspertus maloniai nustebino 
+                    per nugriuvusius ant tako medžius sumontuoti tilteliai. Įspūdingai atrodo. Nors takas 
+                    neilgas, bet nusiteik, kad kojoms bus gera mankšta, nes laiptų gan nemažai. 
+                    Jurkiškio upelio taką rasi netoli Molėtų, tad tikrai nepraleisk progos pasidžiaugti 
+                    vasara ir aplankyk šį nuostabų ežerų kraštą.
+                </div>
+                <div class="route-extra"><strong>Tako ilgis:</strong> 1,5 km</div>
+                <div class="route-extra"><strong>Adresas:</strong> Jurkiškio upl.</div>
+                <div class="route-extra"><strong>Nuotraukos:</strong> <img src="assets/1.jpg" alt="Jurkiškio upelio pažintinis takas" style="width:100%; border-radius: 8px; margin-bottom: 15px;"></div>
+            </div>
+            <div class="route-card">
+                <div class="route-title">Karmazinų pažintinis takas</div>
+                <div class="route-description">
+                    Karmazinų pažintinis takas – tai tikras lobynas: čia gali rasti didžiausią pilkapyną 
+                    Vilniaus apylinkėse, plačiausią Neries vagą parko teritorijoje, aukščiausią skardį su 
+                    daugybe laiptelių į viršų ir daugybę vietų pasidaryti pikniką. Tako maršrute atsiveria 
+                    kvapą gniaužiantys vaizdai į Neries upę, senuosius miško masyvus ir natūralų 
+                    kraštovaizdį, kuris kinta priklausomai nuo metų laiko. Tako teritorijoje yra net 
+                    penkios tokios vietos, kuriose įrengti stalai, suolai, laužavietės bei pavėsinės – 
+                    puiki vieta pasislėpti nuo permainingo lietuviško oro.
+                </div>
+                <div class="route-extra"><strong>Tako ilgis:</strong> apie 6 km</div>
+                <div class="route-extra"><strong>Adresas:</strong> Dūkšos, Vilniaus rajonas, Neries regioninis parkas</div>
+                <div class="route-extra"><strong>Nuotraukos:</strong> <img src="assets/2.jpg" alt="Karmazinų pažintinis takas" style="width:100%; border-radius: 8px; margin-bottom: 15px;"></div>
+            </div>
+            <div class="route-card">
+                <div class="route-title">Arlaviškių pažintinis takas (Kadagių slėnis)</div>
+                <div class="route-description">
+                    Arlaviškių pažintinis takas – tai vienas iš įspūdingiausių pažintinių takų Lietuvoje, 
+                    kuris prieš keletą metų buvo pripažintas gražiausiu Lietuvoje! Šis takas įrengtas 
+                    kadagiais apaugusio šlaito viršuje, kur Nemunas platėdamas susilieja su Kauno mariomis, 
+                    suteikia unikalią galimybę pasigrožėti nuostabiais gamtos vaizdais bei pažinti Kauno 
+                    marių regioninio parko biologinę įvairovę. Informaciniai stendai išsamiai pasakoja 
+                    apie kadagyno susiformavimą, čia besiganiusių gyvulių įtaką bei užlietų kaimų 
+                    istorijas. Maršrutas yra gerai pritaikytas lankytojams – nuo automobilių stovėjimo 
+                    aikštelės veda medinių lentelių takas, kuris užtikrina patogų ir saugų keliavimą, o 
+                    tolimojoje maršruto dalyje įrengti mediniai laipteliai leidžia nusileisti iki pat Kauno 
+                    marių pakrantės.
+                </div>
+                <div class="route-extra"><strong>Tako ilgis:</strong> 1.9 km</div>
+                <div class="route-extra"><strong>Adresas:</strong> Kadagių slėnio g., Arlaviškės, Kauno raj.</div>
+                <div class="route-extra"><strong>Nuotraukos:</strong> <img src="assets/3.jpg" alt="Arlaviškių pažintinis takas" style="width:100%; border-radius: 8px; margin-bottom: 15px;"></div>
+            </div>
+            <div class="route-card">
+                <div class="route-title">Saidės pažintinis takas</div>
+                <div class="route-description">
+                    Visai arti Vilniaus, lengva privažiuoti. Labai gražus trumpas takas. Pamatysi daug 
+                    įspūdingų akmenų, vingiuoja labai gražus Saidės upelis, didingas Stirnių piliakalnis, 
+                    seni ąžuolai. Stovint ties upių susitikimo vieta, atsiveria peizažas kuris nėra 
+                    tipiškas mūsų kraštui, o gal labiau net primena Skandinavijos šalis. Rekomenduotume 
+                    paeiti ir toliau už pažintinio tako palei upelį, nes abejose pusėse yra išminti 
+                    takeliai, o vaizdai tikrai labai gražūs, tarsi gamta būtų žmogaus nepaliesta. 
+                    Laipteliai gana senoki, kai kur trūksta vienos kitos lentos, bet problemų lipant 
+                    nebuvo. Jeigu esi gamtos mylėtojas, šią vietą, jeigu dar nebuvai, tikrai įsimylėsi. 
+                    NoriuNoriuNoriu poilsio ekspertai bei Isijunk poilsį Lietuvoje grupės nariai labai 
+                    rekomenduoja šią vietą!
+                </div>
+                <div class="route-extra"><strong>Tako ilgis:</strong> 1 km</div>
+                <div class="route-extra"><strong>Adresas:</strong> Saidės upelis, Vilniaus apskritis</div>
+                <div class="route-extra"><strong>Nuotraukos:</strong> <img src="assets/5.jpg" alt="Saidės pažintinis takas" style="width:100%; border-radius: 8px; margin-bottom: 15px;"></div>
+            </div>
+            <div class="route-card">
+                <div class="route-title">Ekologinis pėsčiųjų „Žaliasis takas“</div>
+                <div class="route-description">
+                    Šį taką rasi Aukštadvario regioniniame parke. Atstumas nuo Vilniaus apie 50 km. Gana 
+                    ilgas – apie 7,5 km. Šis pažintinis takas lankytojus traukia nepaprastai skaidriu 
+                    Spindžiaus ežero vandeniu, galimybe pasivaikščioti po senovinį mišką ir kitomis 
+                    gamtos grožybėmis. Poilsiautojai labai rekomenduoja šį taką, rašoma, kad Spindžiaus 
+                    miškas – tai vienas gražiausių ir vertingiausių parko miškų, apjuostas Strėvos upės 
+                    ir ežerų. Tautosakoje ypač pabrėžiamas upės sakralumas, nes ji išteka „prieš tekančią 
+                    saulę”. Be to, čia rasi ir Strėvos įgriuvą, tai apie 20 metrų gylio dubens formos 
+                    duobė, dažnai vadinama Velnio duobės seserimi. Tiems, kam patinka ilgi 
+                    pasivaikščiojimai, NoriuNoriuNoriu poilsio ekspertai rekomenduoja šį pažintinį taką, 
+                    jeigu ieškai ilgesnio žygio.
+                </div>
+                <div class="route-extra"><strong>Tako ilgis:</strong> apie 7,5 km</div>
+                <div class="route-extra"><strong>Adresas:</strong> Aukštadvario regioninis parkas</div>
+                <div class="route-extra"><strong>Nuotraukos:</strong> <img src="assets/4.jpg" alt="Ekologinis pėsčiųjų „Žaliasis takas“" style="width:100%; border-radius: 8px; margin-bottom: 15px;"></div>
+            </div>
+            <div class="route-card">
+                <div class="route-title">Šilėnų pažintinis takas</div>
+                <div class="route-description">
+                    Neries regioniniame parke įrengtas Šilėnų pažintinis takas puikiai tinka aktyviam 
+                    laisvalaikiui. Tad apsimauk patogią avalynę, pasiimk su savimi vandens ir pirmyn! 
+                    Aplinka sutvarkyta, gražūs vaizdai prie upės, pelkės, medžiai, nuostabi gamta. 
+                    Pradėjus ėjimą pro pelkę, toliau sunkesnis kopimas. O pradėjus pro kaimą ir kapines, 
+                    lengviau. Ši vieta maloniai nustebins didžiule kraštovaizdžio įvairove: etnokultūrinis 
+                    Šilėnų kaimas, stebuklingi šaltiniai, Naujosios Rėvos piliakalnis, lietuviškų 
+                    orchidėjų pelkė ir daug kitų įdomių vaizdų.
+                </div>
+                <div class="route-extra"><strong>Tako ilgis:</strong> apie 6 km</div>
+                <div class="route-extra"><strong>Adresas:</strong> Šilėnų kaimas, Neries regioninis parkas</div>
+                <div class="route-extra"><strong>Nuotraukos:</strong> <img src="assets/6.jpg" alt="Ekologinis pėsčiųjų „Žaliasis takas“" style="width:100%; border-radius: 8px; margin-bottom: 15px;"></div>
+            </div>
+            <div class="route-card">
+                <div class="route-title">Ribiškių pažintinis takas</div>
+                <div class="route-description">
+                    Šis takas prasideda ir pasibaigia prie Minsko pl. 14 esančio viešbučio. Prie įvažiavimo 
+                    yra daug parkavimosi vietų. Naudojamas tiek pėsčiųjų, tiek slidininkų. Šiame take yra 
+                    įkalnių ir nuokalnių, tačiau neskubant pasigrožėsite puikiais vaizdais, kurie atsiveria 
+                    nuo kalvų. Čia gera pasivaikščioti ne tik vasarą, pavasarį, rudenį, bet ir žiemą. 
+                    Takas prižiūrimas ir puikiai sužymėtas, tad tikrai nepasiklysite.
+                </div>
+                <div class="route-extra"><strong>Tako ilgis:</strong> apie 6 km</div>
+                <div class="route-extra"><strong>Adresas:</strong> Minsko pl. 14, Vilnius</div>
+                <div class="route-extra"><strong>Nuotraukos:</strong> <img src="assets/7.jpg" alt="Ekologinis pėsčiųjų „Žaliasis takas“" style="width:100%; border-radius: 8px; margin-bottom: 15px;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Maršrutų Svetainė | Visos teisės saugomos</p>
+        <div class="social-share">
+            <a href="https://www.facebook.com/deividas.doda.7/" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/scamlxrd" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+</body>
+</html>

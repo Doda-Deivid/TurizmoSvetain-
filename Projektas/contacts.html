@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontaktai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; 
+            color: #e0e0e0;       
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(145deg, #1a1a1a, #212121);
+            padding: 30px 0;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            color: #ecf0f1;
+            position: relative;
+            z-index: 10;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header nav ul li {
+            margin: 0 12px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        header nav ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            padding: 12px 18px;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            text-align: center;
+            display: block;
+        }
+
+        header nav ul li a.active {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        header nav ul li a:hover {
+            background-color: #2980b9;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        main {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #212121, #181818);
+            border-radius: 15px;
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2 {
+            color: #ecf0f1;
+            margin-bottom: 30px;
+            font-size: 3.2em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 40px;
+            box-shadow: 0 -6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer p {
+            font-size: 1.2em;
+        }
+
+        .social-share {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .social-share a {
+            text-decoration: none;
+            font-size: 2.5em;
+            margin: 0 25px;
+            color: #ecf0f1;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-share a:hover {
+            color: #e74c3c;
+            transform: scale(1.1);
+        }
+</style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Pagrindinis</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> Apie mus</a></li>
+                <li><a href="routes.html"><i class="fas fa-map-marked-alt"></i> Maršrutai</a></li>
+                <li><a href="contacts.html"><i class="fas fa-phone-alt"></i> Kontaktai</a></li>
+                <li><a href="faq.html"><i class="fas fa-question-circle"></i> D.U.K.</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>     
+            <h2>+370 600 12345 / +370 699 99999</h2>
+
+            <h2>info@turizmas.lt</h2>
+
+            <h2>Vilniaus g. 12, Vilnius, Lietuva</h2>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Maršrutų Svetainė | Visos teisės saugomos</p>
+        <div class="social-share">
+            <a href="https://www.facebook.com/deividas.doda.7/" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/scamlxrd" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
